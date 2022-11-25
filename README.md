@@ -9,8 +9,8 @@ Don's Christmas Gifts for QBCore! This is a paid script, available on my [Tebex]
 - Christmas Gift Daily Rewards System
 - Players can only claim one gift per day
 - The Gift can be either;
-    - *Fully Unique* picking a Random item from your Shared Items (excluding weapons) or
-    - *Randomised* picking a Random item from a list of items you set in the Config
+    - *Fully Unique* picking a Random set of items from your Shared Items (excluding weapons) or
+    - *Randomised* picking a Random set of items from a list of items you set in the Config
 - 10 Trees preconfigured, but you can add as many as you want
 - Discord Logs for when a player claims a gift 
 
