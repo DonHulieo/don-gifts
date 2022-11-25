@@ -1,5 +1,5 @@
 # don-gifts
-Don's Christmas Gifts for QBCore! This is a paid script, available on my [Tebex]().
+Don's Christmas Gifts for QBCore! This is a paid script, available on my [Tebex](https://dons-developments.tebex.io/package/5395562).
 
 # Dependencies
 - [qb-core](https://github.com/qbcore-framework/qb-core)
