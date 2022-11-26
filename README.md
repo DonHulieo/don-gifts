@@ -15,7 +15,7 @@ Don's Christmas Gifts for QBCore! This is a paid script, available on my [Tebex]
 - Discord Logs for when a player claims a gift 
 
 # Preview
-- *coming soon..*
+- [don-gifts](https://www.youtube.com/watch?v=HyM6QdLv-bA)
 
 # Important Config
 ```
