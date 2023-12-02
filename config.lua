@@ -29,8 +29,12 @@ Config.Gifts = {
   min = 1, -- minimum amount of each item
   max = 3, -- maximum amount of each item
   total = 5, -- amount of different items in the present
-  time = '00:00:10', -- amount of time before a player can open another present
+  time = '24:00:00', -- amount of time before a player can open another present
   ['Items'] = { -- If Config.Unique is false, the items will be randomly selected from this list
+    ['BlackList'] = { -- These items will never be in the present
+      'present',
+      'radioscanner'
+    },
     ['Low'] = { -- These items have a 50% chance of being in the present
       'coffee', -- 'bread',
       'joint', -- 'cannabis',

@@ -137,6 +137,10 @@ Config.Gifts = {
   total = 5,
   time = '24:00:00',
   ['Items'] = {
+    ['BlackList'] = {
+      'present',
+      'radioscanner'
+    },
     ['Low'] = { -- These items have a 50% chance of being in the present
       'coffee',
       'joint',
@@ -167,7 +171,8 @@ Config.Gifts = {
 - `total` integer, the amount of different items in the present.
 - `time` string, the amount of time before a player can open another present (accurate to the second).
 - `['Items']` table, the items that can be in the present if `Config.Gifts.unique` is set to false.
-- The items are split into 3 categories, `['Low']`, `['Med']` and `['High']`. The items are then randomly selected from these categories, with the chance of each category being selected being 50%, 35% and 15% respectively.
+- `['Items']['BlackList']` table, the items that will not be in the present if `Config.Gifts.unique` is set to true.
+- The items are then split into 3 more categories, `['Low']`, `['Med']` and `['High']`. The items are then randomly selected from these categories, with the chance of each category being selected being 50%, 35% and 15% respectively.
 
 #### Locations
 
@@ -206,6 +211,7 @@ end
 
 ### Changelog
 
+- v1.0.6 - Added a Notify if the Players Inventory is Full and Added Item Blacklist for Unique Gifts
 - v1.0.5 - Automatic MultiFramework Support (Target, Inventory and Core Functions)
 - v1.0.4 - Add Support for ESX
 - v1.0.3 - Refactor Code and Add PolyZones
