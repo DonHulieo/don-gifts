@@ -211,6 +211,7 @@ end
 
 ### Changelog
 
+- v1.0.7 - Fixed Issue With Items in High Table Not Being Added to Present
 - v1.0.6 - Added a Notify if the Players Inventory is Full and Added Item Blacklist for Unique Gifts
 - v1.0.5 - Automatic MultiFramework Support (Target, Inventory and Core Functions)
 - v1.0.4 - Add Support for ESX
