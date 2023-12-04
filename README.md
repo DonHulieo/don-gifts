@@ -26,10 +26,11 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
       - [Image and Item](#image-and-item)
       - [Globals](#globals)
       - [Blips](#blips)
-      - [DrawText](#drawtext)
       - [Rewards](#rewards)
       - [Locations](#locations)
+      - [Locales](#locales)
       - [Notifications](#notifications)
+      - [Target](#target)
     - [Support](#support)
     - [Changelog](#changelog)
 
@@ -88,19 +89,16 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 #### Globals
 
 ```lua
-Config.UseTarget = true
 Config.Model = `prop_xmas_tree_int`
 ```
 
-- `Config.UseTarget` boolean, if set false, the player will be able to claim the gift by walking up to the tree and pressing E.
-- `Config.Model` string, the model of the tree, this is used for the target. Can be either a hash or a model name.
+- `Config.Model` string, the model of the tree, this is used for the target. Can be either a hash or a model name. You can find the model names [here](https://forge.plebmasters.de/objects).
 
 #### Blips
 
 ```lua
 Config.Blips = {
   enabled = true,
-  name = 'Christmas Tree',
   sprite = 781,
   colour = 25,
   scale = 0.8,
@@ -109,23 +107,10 @@ Config.Blips = {
 ```
 
 - `enabled` boolean, if set false, the blips will not be shown on the map.
-- `name` string, the name of the blip.
 - `sprite` integer, the sprite of the blip.
 - `colour` integer, the colour of the blip.
 - `scale` float, the scale of the blip.
 - `shortRange` boolean, if set true, the blip will only be shown when the player is within 425 units of the tree.
-
-#### DrawText
-
-```lua
-Config.DrawText = {
-  ['grabGift'] = 'Press [~g~E~w~] to grab a gift',
-  ['hasGift'] = 'You already have a gift!'
-}
-```
-
-- `['grabGift']` string, the text to display when the player is within 2.5 units of the tree and doesn't have a gift.
-- `['hasGift']` string, the text to display when the player is within 2.5 units of the tree and has a gift.
 
 #### Rewards
 
@@ -186,23 +171,48 @@ Config.Locations = {
 
 Follow the format above to add more locations. The script will automatically create the trees at these locations.
 
+#### Locales
+
+When changing the locales, please ensure you the fxmanifest.lua is set to the correct locale. For example, if you are using English, the fxmanifest.lua `shared_scripts` should look like this:
+
+```lua
+shared_scripts {'locales/lang.lua', 'locales/en.lua', ...}
+```
+
+Where `locales/en.lua` is the locale you are using. If you are using another locale, change the `en` to the locale you are using.
+**Note:** If you are using a locale other than English, you will need to translate the `en.lua` file, if your locale is not already included.
+
 #### Notifications
 
 ```lua
 ---@param source number|string|nil The source of the player
 ---@param text string The text to send
 ---@param type string The type of notification
-function Config.Notify(source, text, type)
-  if IsDuplicityVersion() then
-    local src = source
-    -- Put Your Server Side Notification Here
-  else
-    -- Put Your Client Side Notification Here
-  end
+---@param time number|nil The time to show the notification
+function Config.Notify(source, text, type, time)
+  local src = source
+  local types = {['error'] = 'error', ['success'] = 'success', ['primary'] = 'primary'}
+  if not IsDuplicityVersion() or not src then return end
+  -- ServerSide Notification
 end
 ```
 
 - `Config.Notify` function, this is used to send notifications to the player. You can use this to send notifications to the player in your own way. Whether that be okok, base QB or ox_lib!
+- `types` table, this is used to change the notification types to suit your notification resource. The default is set to `qb`'s notification types. To change this, simply change the value of the key to the type of notification you want to send. (ie. for okok, change `['primary'] = 'primary'` to `['primary'] = 'info'`).
+
+#### Target
+
+```lua
+Config.Target = {
+  enabled = true,
+  distance = 1.5,
+  icon = 'fas fa-gift'
+}
+```
+
+- `enabled` boolean, if set false, the target will not be shown.
+- `distance` float, the distance to draw the target.
+- `icon` string, the icon to use for the target. You can find the icons [here](https://fontawesome.com/icons).
 
 ### Support
 
@@ -211,6 +221,7 @@ end
 
 ### Changelog
 
+- v1.0.8 - Created Locales, Small Edits to Notify and Fixed Issue With ESX Inventories Always Returning Full
 - v1.0.7 - Fixed Issue With Items in High Table Not Being Added to Present
 - v1.0.6 - Added a Notify if the Players Inventory is Full and Added Item Blacklist for Unique Gifts
 - v1.0.5 - Automatic MultiFramework Support (Target, Inventory and Core Functions)

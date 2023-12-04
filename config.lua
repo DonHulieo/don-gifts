@@ -1,11 +1,9 @@
 Config = {}
 
-Config.UseTarget = false -- Set to false if you don't want to use qb-target or ox_target
 Config.Model = `prop_xmas_tree_int` -- Model of the object | Can Be Either a String or Hash | https://forge.plebmasters.de/objects
 
 Config.Blips = {
   enabled = true, -- Set to false if you don't want blips
-  name = 'Christmas Tree', -- Blip name
   sprite = 781, -- Blip sprite
   colour = 25, -- Blip colour
   scale = 0.8, -- Blip scale
@@ -14,14 +12,8 @@ Config.Blips = {
 
 Config.DiscordLogs = {
   enabled = true, -- Set to true if you want to log to discord
-  title = 'Don Gifts', -- Set to the title you want to use for the logs
   image = '', -- Set to the image you want to use for the logs
   colour = 65309 -- https://www.spycolor.com/
-}
-
-Config.DrawText = {
-  grabGift = 'Press [~g~E~w~] to grab a gift',
-  hasGift = 'You already have a gift!'
 }
 
 Config.Gifts = {
@@ -72,17 +64,21 @@ Config.Locations = {
 ---@param source number|string|nil The source of the player
 ---@param text string The text to send
 ---@param type string The type of notification
-function Config.Notify(source, text, type)
-  if IsDuplicityVersion() then -- ServerSide Notification
-    local src = source
-    -- local Player = GetPlayerData(src)
-    -- if not Player then return end
-    -- Player.showNotification(text)
-    TriggerClientEvent('QBCore:Notify', src, text, type)
-  else -- ClientSide Notification
-    local Core = GetCoreObject()
-    if not Core then return end
-    Core.Functions.Notify(text, type)
-    -- Core.ShowNotification(text, type)
-  end
+---@param time number|nil The time to show the notification
+function Config.Notify(source, text, type, time)
+  local src = source
+  local types = {['error'] = 'error', ['success'] = 'success', ['primary'] = 'primary'}
+  -- Use the above table to change notify types to suit your notification resource
+  if not IsDuplicityVersion() or not src then return end
+  -- ServerSide Notification
+  -- local Player = GetPlayerData(src)
+  -- if not Player then return end
+  -- Player.showNotification(text)
+  TriggerClientEvent('QBCore:Notify', src, text, types[type] or 'primary', time)
 end
+
+Config.Target = {
+  enabled = true, -- Set to false if you don't want to use qb-target or ox_target
+  distance = 1.5, -- Distance to draw the target
+  icon = 'fas fa-gift' -- https://fontawesome.com/icons
+}
