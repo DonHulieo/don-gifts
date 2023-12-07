@@ -69,7 +69,7 @@ function Config.Notify(source, text, type, time)
   local src = source
   local types = {['error'] = 'error', ['success'] = 'success', ['primary'] = 'primary'}
   -- Use the above table to change notify types to suit your notification resource
-  if not IsDuplicityVersion() or not src then return end
+  if not IsDuplicityVersion() or not src then return end -- This checks whether the function is being called from the server or client
   -- ServerSide Notification
   -- local Player = GetPlayerData(src)
   -- if not Player then return end

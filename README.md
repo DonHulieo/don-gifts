@@ -221,6 +221,7 @@ Config.Target = {
 
 ### Changelog
 
+- v1.0.9 - Improve Weapon Check on Present Items and Added Logs for Items in Present
 - v1.0.8 - Created Locales, Small Edits to Notify and Fixed Issue With ESX Inventories Always Returning Full
 - v1.0.7 - Fixed Issue With Items in High Table Not Being Added to Present
 - v1.0.6 - Added a Notify if the Players Inventory is Full and Added Item Blacklist for Unique Gifts
