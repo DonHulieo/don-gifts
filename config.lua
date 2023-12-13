@@ -1,5 +1,6 @@
 Config = {}
 
+Config.Locale = 'en' -- Locale to use (for non qb users) | Needs to match a locale file in the locales folder
 Config.Model = `prop_xmas_tree_int` -- Model of the object | Can Be Either a String or Hash | https://forge.plebmasters.de/objects
 
 Config.Blips = {

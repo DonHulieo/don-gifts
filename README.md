@@ -89,9 +89,11 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 #### Globals
 
 ```lua
+Config.Locale = 'en'
 Config.Model = `prop_xmas_tree_int`
 ```
 
+- `Config.Locale` string, the locale to use for the script. This is for non QBCore framework users. You can find the names in the `locales` folder.
 - `Config.Model` string, the model of the tree, this is used for the target. Can be either a hash or a model name. You can find the model names [here](https://forge.plebmasters.de/objects).
 
 #### Blips
@@ -221,6 +223,7 @@ Config.Target = {
 
 ### Changelog
 
+- v1.1.0 - Attempt to Fix Ghost `name` column in SQL, Added Exploit Check for Recieving Gifts & Added a Version Checker
 - v1.0.9 - Improve Weapon Check on Present Items and Added Logs for Items in Present
 - v1.0.8 - Created Locales, Small Edits to Notify and Fixed Issue With ESX Inventories Always Returning Full
 - v1.0.7 - Fixed Issue With Items in High Table Not Being Added to Present
