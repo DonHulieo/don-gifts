@@ -8,10 +8,11 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 - Christmas Gift Daily Rewards System
 - Players Can Only Claim One Gift Per Pre-Configured Time Period (default 24 hours)
 - The Gift can be either;
-  - *Fully Unique* picking a Random item from your Shared Items (excluding weapons) or
-  - *Randomised* picking a Random item from the Config table
+  - *Fully Unique* Items are Randomly Picked From Your Framework's Items Table (excluding weapons)
+  - *Randomised* Items are Picked From 3 Categories, Low, Medium and High, with the Chance of Each Category being Configurable
 - 10 Trees Pre-Configured, with the Ability to Add More
 - Discord Logs for When a Player Claims a Gift
+- Anti Exploit Checks for When a Player Claims a Gift
 
 ## Table of Contents
 
@@ -36,13 +37,12 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 
 ### Preview
 
-- [Don-Gifts](https://www.youtube.com/watch?v=HyM6QdLv-bA)
+[Don-Gifts YouTube Preview](https://www.youtube.com/watch?v=HyM6QdLv-bA)
 
 ### Installation
 
 #### Dependencies
 
-- [oxmysql](https://github.com/overextended/oxmysql/releases/tag/v2.7.6)
 - [PolyZone](https://github.com/mkafrin/PolyZone)
 
 **Depending on your Framework and if you use a Targetting system, you will need to have installed either of the following dependencies:**
@@ -89,10 +89,12 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 #### Globals
 
 ```lua
+Config.DebugMode = false
 Config.Locale = 'en'
 Config.Model = `prop_xmas_tree_int`
 ```
 
+- `Config.DebugMode` boolean, if set true, the script will print debug messages to the console.
 - `Config.Locale` string, the locale to use for the script. This is for non QBCore framework users. You can find the names in the `locales` folder.
 - `Config.Model` string, the model of the tree, this is used for the target. Can be either a hash or a model name. You can find the model names [here](https://forge.plebmasters.de/objects).
 
@@ -128,7 +130,12 @@ Config.Gifts = {
       'present',
       'radioscanner'
     },
-    ['Low'] = { -- These items have a 50% chance of being in the present
+    ['Chance'] = {
+      ['Low'] = 50,
+      ['Med'] = 35,
+      ['High'] = 15
+    },
+    ['Low'] = {
       'coffee',
       'joint',
       'screwdriverset',
@@ -138,13 +145,13 @@ Config.Gifts = {
       'lockpick',
       'water_bottle'
     },
-    ['Med'] = { -- These items have a 35% chance of being in the present
+    ['Med'] = {
       'security_card_01',
       'security_card_02',
       'advancedlockpick',
       'repairkit'
     },
-    ['High'] = { -- These items have a 15% chance of being in the present
+    ['High'] = {
       'trojan_usb',
       'diamond_ring'
     }
@@ -159,7 +166,8 @@ Config.Gifts = {
 - `time` string, the amount of time before a player can open another present (accurate to the second).
 - `['Items']` table, the items that can be in the present if `Config.Gifts.unique` is set to false.
 - `['Items']['BlackList']` table, the items that will not be in the present if `Config.Gifts.unique` is set to true.
-- The items are then split into 3 more categories, `['Low']`, `['Med']` and `['High']`. The items are then randomly selected from these categories, with the chance of each category being selected being 50%, 35% and 15% respectively.
+- `['Items']['Chance]` table, the chance of each category being in the present if `Config.Gifts.unique` is set to false.
+- The items are then split into 3 more categories, `['Low']`, `['Med']` and `['High']`. The items are then randomly selected from these categories, with the chance of each category being determined by the `['Chance]` table.
 
 #### Locations
 
@@ -223,6 +231,7 @@ Config.Target = {
 
 ### Changelog
 
+- v1.1.1 - Added Configurable Chance for Each Category, Removed `oxmysql` in Favour of Resourve KVPs and Code Linting
 - v1.1.0 - Attempt to Fix Ghost `name` column in SQL, Added Exploit Check for Recieving Gifts & Added a Version Checker
 - v1.0.9 - Improve Weapon Check on Present Items and Added Logs for Items in Present
 - v1.0.8 - Created Locales, Small Edits to Notify and Fixed Issue With ESX Inventories Always Returning Full

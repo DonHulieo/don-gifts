@@ -1,12 +1,13 @@
 Config = {}
 
+Config.DebugMode = false -- Set to true if you want to see debug messages in the console
 Config.Locale = 'en' -- Locale to use (for non qb users) | Needs to match a locale file in the locales folder
 Config.Model = `prop_xmas_tree_int` -- Model of the object | Can Be Either a String or Hash | https://forge.plebmasters.de/objects
 
 Config.Blips = {
   enabled = true, -- Set to false if you don't want blips
-  sprite = 781, -- Blip sprite
-  colour = 25, -- Blip colour
+  sprite = 781, -- Blip sprite | https://docs.fivem.net/docs/game-references/blips/
+  colour = 25, -- Blip colour | https://docs.fivem.net/docs/game-references/blips/#blip-colors
   scale = 0.8, -- Blip scale
   shortRange = true -- Blip only shows when within 425 units of the tree
 }
@@ -28,7 +29,12 @@ Config.Gifts = {
       'present',
       'radioscanner'
     },
-    ['Low'] = { -- These items have a 50% chance of being in the present
+    ['Chance'] = {
+      ['Low'] = 50, -- 50% chance of being in the present
+      ['Med'] = 35, -- 35% chance of being in the present
+      ['High'] = 15 -- 15% chance of being in the present
+    },
+    ['Low'] = {
       'coffee', -- 'bread',
       'joint', -- 'cannabis',
       'screwdriverset', -- 'carotool',
@@ -36,13 +42,13 @@ Config.Gifts = {
       'lockpick', -- 'radio',
       'water_bottle' -- 'water'
     },
-    ['Med'] = { -- These items have a 35% chance of being in the present
+    ['Med'] = {
       'security_card_01', -- 'gazbottle',
       'security_card_02', -- 'iron',
       'advancedlockpick', -- 'medikit',
       'repairkit' -- 'fixkit'
     },
-    ['High'] = { -- These items have a 15% chance of being in the present
+    ['High'] = {
       'trojan_usb', -- 'gold',
       'diamond_ring' -- 'diamond'
     }
