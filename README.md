@@ -4,7 +4,7 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 
 ## Features
 
-- Optimised code, Resting Resmon of 0.0ms and Peaking at 0.04ms Whilst Displaying DrawText.
+- Optimised code, Resting Resmon of 0.00ms and Remaining at 0.0ms in Use or Peaking at 0.04ms Whilst Displaying DrawText.
 - Christmas Gift Daily Rewards System
 - Players Can Only Claim One Gift Per Pre-Configured Time Period (default 24 hours)
 - The Gift can be either;
@@ -231,14 +231,15 @@ Config.Target = {
 
 ### Changelog
 
-- v1.1.1 - Added Configurable Chance for Each Category, Removed `oxmysql` in Favour of Resourve KVPs and Code Linting
-- v1.1.0 - Attempt to Fix Ghost `name` column in SQL, Added Exploit Check for Recieving Gifts & Added a Version Checker
-- v1.0.9 - Improve Weapon Check on Present Items and Added Logs for Items in Present
-- v1.0.8 - Created Locales, Small Edits to Notify and Fixed Issue With ESX Inventories Always Returning Full
-- v1.0.7 - Fixed Issue With Items in High Table Not Being Added to Present
-- v1.0.6 - Added a Notify if the Players Inventory is Full and Added Item Blacklist for Unique Gifts
-- v1.0.5 - Automatic MultiFramework Support (Target, Inventory and Core Functions)
-- v1.0.4 - Add Support for ESX
-- v1.0.3 - Refactor Code and Add PolyZones
-- v1.0.1 - Linting
-- v1.0.0 - Initial Release
+- v1.1.2 - Improve Blip Deletion, Fix Some Annotations & Improve RNG.
+- v1.1.1 - Added Configurable Chance for Each Category, Removed `oxmysql` in Favour of Resourve KVPs and Code Linting.
+- v1.1.0 - Attempt to Fix Ghost `name` column in SQL, Added Exploit Check for Recieving Gifts & Added a Version Checker.
+- v1.0.9 - Improve Weapon Check on Present Items and Added Logs for Items in Present.
+- v1.0.8 - Created Locales, Small Edits to Notify and Fixed Issue With ESX Inventories Always Returning Full.
+- v1.0.7 - Fixed Issue With Items in High Table Not Being Added to Present.
+- v1.0.6 - Added a Notify if the Players Inventory is Full and Added Item Blacklist for Unique Gifts.
+- v1.0.5 - Automatic MultiFramework Support (Target, Inventory and Core Functions).
+- v1.0.4 - Add Support for ESX.
+- v1.0.3 - Refactor Code and Add PolyZones.
+- v1.0.1 - Linting.
+- v1.0.0 - Initial Release.
