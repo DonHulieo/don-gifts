@@ -231,6 +231,7 @@ Config.Target = {
 
 ### Changelog
 
+- v1.1.3 - Changed to use Promises in Version Checker, Fixed Crash Related to Blips & Update README.
 - v1.1.2 - Improve Blip Deletion, Fix Some Annotations & Improve RNG.
 - v1.1.1 - Added Configurable Chance for Each Category, Removed `oxmysql` in Favour of Resourve KVPs and Code Linting.
 - v1.1.0 - Attempt to Fix Ghost `name` column in SQL, Added Exploit Check for Recieving Gifts & Added a Version Checker.
