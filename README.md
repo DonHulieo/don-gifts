@@ -1,11 +1,12 @@
 # don-gifts
 
-Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](https://dons-developments.tebex.io/package/5395562).
+Don's Daily Gifts for FiveM! This is a paid script, available on my [Tebex](https://dons-developments.tebex.io/package/5395562).
 
 ## Features
 
 - Optimised code, Resting Resmon of 0.00ms and Remaining at 0.0ms in Use or Peaking at 0.04ms Whilst Displaying DrawText.
-- Christmas Gift Daily Rewards System
+- Default Christmas Theme, but Can be Changed to Suit Any Theme.
+- Daily Rewards System
 - Players Can Only Claim One Gift Per Pre-Configured Time Period (default 24 hours)
 - The Gift can be either;
   - *Fully Unique* Items are Randomly Picked From Your Framework's Items Table (excluding weapons)
@@ -27,6 +28,7 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
       - [Image and Item](#image-and-item)
       - [Globals](#globals)
       - [Blips](#blips)
+      - [Discord Logs](#discord-logs)
       - [Rewards](#rewards)
       - [Locations](#locations)
       - [Locales](#locales)
@@ -37,18 +39,23 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 
 ### Preview
 
-[Don-Gifts YouTube Preview](https://www.youtube.com/watch?v=HyM6QdLv-bA)
+[don-gifts](https://www.youtube.com/watch?v=HyM6QdLv-bA)
 
 ### Installation
 
 #### Dependencies
 
+**This script requires the following scripts to be installed:**
+
+- [duff](https://github.com/DonHulieo/duff)
 - [PolyZone](https://github.com/mkafrin/PolyZone)
 
-**Depending on your Framework and if you use a Targetting system, you will need to have installed either of the following dependencies:**
+**Depending on your Framework, Inventory and if you use a Targetting system, you will need to have installed either of the following dependencies:**
 
-- [QBCore](https://github.com/qbcore-framework/qb-core)
-- [ESX](https://github.com/esx-framework/esx_core)
+- [qb-core](https://github.com/qbcore-framework/qb-core)
+- [es_extended](https://github.com/esx-framework/esx_core)
+- [qb-inventory](https://github.com/qbcore-framework/qb-inventory)
+- [ox_inventory](https://github.com/overextended/ox_inventory)
 - [ox_target](https://github.com/overextended/ox_target)
 - [qb-target](https://github.com/qbcore-framework/qb-target)
 
@@ -56,11 +63,9 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 
 - Always use the latest FiveM artifacts (tested on 6683), you can find them [here](https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/).
 - Download the latest version from your keymaster.
-- Extract the contents of the zip file into your resources folder, into a folder which starts after your framework or;
-- Ensure the script in your `server.cfg` after your framework.
-- Install the Present Image and Item (see below).
-
-**Note:** This script automatically inserts the required SQL into your database. It also configures it's Target, Inventory and Core functions to work with your framework, automatically.
+- Extract the contents of the zip file into your resources folder, into a folder which starts after your framework & `duff` or;
+- Ensure the script in your `server.cfg` after your framework & `duff`.
+- Configure `shared/config.lua` to your liking, see [Configuration](#configuration) for more information.
 
 ### Configuration
 
@@ -70,61 +75,75 @@ Don's Christmas Gifts for FiveM! This is a paid script, available on my [Tebex](
 - Add the item to your relevant framework shared items, following the format below.
 
 ```lua
-['present'] = {
-  ['name'] = 'present', 
-  ['label'] = 'Present', 
-  ['weight'] = 500, 
-  ['type'] = 'item', 
-  ['image'] = 'present.png', 
-  ['unique'] = false, 
-  ['useable'] = true, 
-  ['shouldClose'] = true, 
-  ['combinable'] = nil, 
-  ['description'] = 'Have you been naughty or nice?'
-},
+present = {
+  name = 'present',
+  label = 'Present',
+  weight = 500,
+  type = 'item',
+  image = 'present.png',
+  unique = false,
+  useable = true,
+  shouldClose = true,
+  combinable = nil,
+  description = 'Have you been naughty or nice?'
+}
 ```
 
-**Note** The item name must be `present` and the image name must be `present.png`, but the rest of the item can be configured to your framework and liking.
+**Note:** The item name must be `present` and the image name must be `present.png`, but the rest of the item can be configured to your framework and liking.
 
 #### Globals
 
 ```lua
-Config.DebugMode = false
-Config.Locale = 'en'
-Config.Model = `prop_xmas_tree_int`
+['DebugMode'] = false,
+['Model'] = `prop_xmas_tree_int`,
 ```
 
-- `Config.DebugMode` boolean, if set true, the script will print debug messages to the console.
-- `Config.Locale` string, the locale to use for the script. This is for non QBCore framework users. You can find the names in the `locales` folder.
-- `Config.Model` string, the model of the tree, this is used for the target. Can be either a hash or a model name. You can find the model names [here](https://forge.plebmasters.de/objects).
+- `DebugMode` boolean, whether to show debug messages in the console.
+- `Model` integer|string, the model of the object, this is also used for the target. Can be either a hash or a model name. You can find the model names [here](https://forge.plebmasters.de/objects).
 
 #### Blips
 
 ```lua
-Config.Blips = {
-  enabled = true,
-  sprite = 781,
-  colour = 25,
-  scale = 0.8,
-  shortRange = true
+['Blips'] = {
+  ['enabled'] = true,
+  ['sprite'] = 781,
+  ['colour'] = 25,
+  ['scale'] = 0.8,
+  ['shortRange'] = true
 }
 ```
 
-- `enabled` boolean, if set false, the blips will not be shown on the map.
-- `sprite` integer, the sprite of the blip.
-- `colour` integer, the colour of the blip.
+- `enabled` boolean, whether to show blips on the map.
+- `sprite` integer, the sprite of the blip, you can find the sprites [here](https://docs.fivem.net/docs/game-references/blips/).
+- `colour` integer, the colour of the blip, you can find the colours [here](https://docs.fivem.net/docs/game-references/blips/#blip-colors).
 - `scale` float, the scale of the blip.
-- `shortRange` boolean, if set true, the blip will only be shown when the player is within 425 units of the tree.
+- `shortRange` boolean, whether the blip is shown when close to the player or always.
+
+#### Discord Logs
+
+**Note:** You will need to have a Discord Webhook setup to use this feature. Your webhook should be saved on line 8 of `server/logs.lua`.
+
+```lua
+['DiscordLogs'] = {
+  ['enabled'] = true,
+  ['image'] = '',
+  ['colour'] = 65309
+}
+```
+
+- `enabled` boolean, whether to log to discord.
+- `image` string, the image to use for the logs.
+- `colour` integer, the colour of the embed, you can find the colours [here](https://www.spycolor.com/).
 
 #### Rewards
 
 ```lua
-Config.Gifts = {
-  unique = false,
-  min = 1,
-  max = 3,
-  total = 5,
-  time = '24:00:00',
+['Gifts'] = {
+  ['unique'] = true,
+  ['min'] = 1,
+  ['max'] = 3,
+  ['total'] = 5,
+  ['time'] = '24:00:00',
   ['Items'] = {
     ['BlackList'] = {
       'present',
@@ -140,8 +159,6 @@ Config.Gifts = {
       'joint',
       'screwdriverset',
       'whiskey',
-      'tosti',
-      'snikkel_candy',
       'lockpick',
       'water_bottle'
     },
@@ -155,42 +172,42 @@ Config.Gifts = {
       'trojan_usb',
       'diamond_ring'
     }
-  }
+  },
 }
 ```
 
-- `unique` boolean, if set true, the present will find a totally random set of items from your QBCore.Share.items table (excluding weapons).
+- `unique` boolean, whether to reward a random set of items from your items table (excluding weapons) or to reward items from the `['Items']` table.
 - `min` integer, the minimum amount of each item.
 - `max` integer, the maximum amount of each item.
 - `total` integer, the amount of different items in the present.
 - `time` string, the amount of time before a player can open another present (accurate to the second).
-- `['Items']` table, the items that can be in the present if `Config.Gifts.unique` is set to false.
-- `['Items']['BlackList']` table, the items that will not be in the present if `Config.Gifts.unique` is set to true.
-- `['Items']['Chance]` table, the chance of each category being in the present if `Config.Gifts.unique` is set to false.
+- `['Items']` table, the items that can be in the present if `['Gifts'].unique` is set to false.
+- `['Items']['BlackList']` table, the items that will not be in the present if `['Gifts'].unique` is set to true.
+- `['Items']['Chance]` table, the chance of each category being in the present if `['Gifts'].unique` is set to false.
 - The items are then split into 3 more categories, `['Low']`, `['Med']` and `['High']`. The items are then randomly selected from these categories, with the chance of each category being determined by the `['Chance]` table.
 
 #### Locations
 
 ```lua
-Config.Locations = {
+['Locations'] = {
   vector3(211.24, -932.15, 29.69),
   vector3(-269.46, -955.23, 30.22),
-  ..., -- Add more locations here
+  vector3(-1037.86, -2737.72, 19.17),
+  vector3(-1811.87, -1206.59, 13.3),
+  vector3(-413.05, 1168.69, 324.85),
+  vector3(-3240.06, 970.25, 11.7),
+  vector3(608.15, 2745.24, 40.99),
+  vector3(1697.02, 3774.44, 33.75),
+  vector3(1695.43, 4787.8, 41.01),
+  vector3(127.36, 6632.87, 30.86)
 }
 ```
 
-Follow the format above to add more locations. The script will automatically create the trees at these locations.
+Follow the format above to add more locations. The script will automatically create the objects at these locations.
 
 #### Locales
 
-When changing the locales, please ensure you the fxmanifest.lua is set to the correct locale. For example, if you are using English, the fxmanifest.lua `shared_scripts` should look like this:
-
-```lua
-shared_scripts {'locales/lang.lua', 'locales/en.lua', ...}
-```
-
-Where `locales/en.lua` is the locale you are using. If you are using another locale, change the `en` to the locale you are using.
-**Note:** If you are using a locale other than English, you will need to translate the `en.lua` file, if your locale is not already included.
+If you are using a locale other than English, you will need to translate the `en.lua` file, if your locale is not already included.
 
 #### Notifications
 
@@ -199,29 +216,34 @@ Where `locales/en.lua` is the locale you are using. If you are using another loc
 ---@param text string The text to send
 ---@param type string The type of notification
 ---@param time number|nil The time to show the notification
-function Config.Notify(source, text, type, time)
+['Notify'] = function(source, text, type, time)
   local src = source
   local types = {['error'] = 'error', ['success'] = 'success', ['primary'] = 'primary'}
-  if not IsDuplicityVersion() or not src then return end
+  -- Use the above table to change notify types to suit your notification resource
+  if not IsDuplicityVersion() or not src then return end -- This checks whether the function is being called from the server or client
   -- ServerSide Notification
+  -- local Player = GetPlayerData(src)
+  -- if not Player then return end
+  -- Player.showNotification(text)
+  TriggerClientEvent('QBCore:Notify', src, text, types[type] or 'primary', time)
 end
 ```
 
-- `Config.Notify` function, this is used to send notifications to the player. You can use this to send notifications to the player in your own way. Whether that be okok, base QB or ox_lib!
+- `Notify` function, this is used to send notifications to the player. You can use this to send notifications to the player in your own way. Whether that be okok, base QB or ox_lib!
 - `types` table, this is used to change the notification types to suit your notification resource. The default is set to `qb`'s notification types. To change this, simply change the value of the key to the type of notification you want to send. (ie. for okok, change `['primary'] = 'primary'` to `['primary'] = 'info'`).
 
 #### Target
 
 ```lua
-Config.Target = {
-  enabled = true,
-  distance = 1.5,
-  icon = 'fas fa-gift'
+['Target'] = {
+  ['enabled'] = true, -- Set to false if you don't want to use qb-target or ox_target
+  ['distance'] = 1.5, -- Distance to draw the target
+  ['icon'] = 'fas fa-gift' -- https://fontawesome.com/icons
 }
 ```
 
-- `enabled` boolean, if set false, the target will not be shown.
-- `distance` float, the distance to draw the target.
+- `enabled` boolean, whether to use a target system or drawtext.
+- `distance` float, the distance the player has to be within to see the target.
 - `icon` string, the icon to use for the target. You can find the icons [here](https://fontawesome.com/icons).
 
 ### Support
@@ -231,6 +253,7 @@ Config.Target = {
 
 ### Changelog
 
+- v1.1.4 - Add [duff](https://github.com/DonHulieo/duff) as a dependency.
 - v1.1.3 - Changed to use Promises in Version Checker, Fixed Crash Related to Blips & Update README.
 - v1.1.2 - Improve Blip Deletion, Fix Some Annotations & Improve RNG.
 - v1.1.1 - Added Configurable Chance for Each Category, Removed `oxmysql` in Favour of Resourve KVPs and Code Linting.
