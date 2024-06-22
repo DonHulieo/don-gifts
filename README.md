@@ -222,7 +222,7 @@ If you are using a locale other than English, you will need to translate the `en
   -- Use the above table to change notify types to suit your notification resource
   if not IsDuplicityVersion() or not src then return end -- This checks whether the function is being called from the server or client
   -- ServerSide Notification
-  -- local Player = GetPlayerData(src)
+  -- local Player = exports.duff:require('shared.bridge').getplayer(src)
   -- if not Player then return end
   -- Player.showNotification(text)
   TriggerClientEvent('QBCore:Notify', src, text, types[type] or 'primary', time)
@@ -253,6 +253,7 @@ end
 
 ### Changelog
 
+- v1.1.5 - Support updates for [duff](https://github.com/DonHulieo/duff).
 - v1.1.4 - Add [duff](https://github.com/DonHulieo/duff) as a dependency.
 - v1.1.3 - Changed to use Promises in Version Checker, Fixed Crash Related to Blips & Update README.
 - v1.1.2 - Improve Blip Deletion, Fix Some Annotations & Improve RNG.
