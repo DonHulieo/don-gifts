@@ -74,7 +74,7 @@ return {
     -- Use the above table to change notify types to suit your notification resource
     if not IsDuplicityVersion() or not src then return end -- This checks whether the function is being called from the server or client
     -- ServerSide Notification
-    -- local Player = exports.duff:require('shared.bridge').getplayer(src)
+    -- local Player = duff.bridge.getplayer(src)
     -- if not Player then return end
     -- Player.showNotification(text)
     TriggerClientEvent('QBCore:Notify', src, text, types[type] or 'primary', time)

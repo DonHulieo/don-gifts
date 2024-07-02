@@ -26,6 +26,8 @@ Don's Daily Gifts for FiveM! This is a paid script, available on my [Tebex](http
       - [Initial Setup](#initial-setup)
     - [Configuration](#configuration)
       - [Image and Item](#image-and-item)
+        - [qb-inventory](#qb-inventory)
+        - [ox\_inventory](#ox_inventory)
       - [Globals](#globals)
       - [Blips](#blips)
       - [Discord Logs](#discord-logs)
@@ -48,7 +50,6 @@ Don's Daily Gifts for FiveM! This is a paid script, available on my [Tebex](http
 **This script requires the following scripts to be installed:**
 
 - [duff](https://github.com/DonHulieo/duff)
-- [PolyZone](https://github.com/mkafrin/PolyZone)
 
 **Depending on your Framework, Inventory and if you use a Targetting system, you will need to have installed either of the following dependencies:**
 
@@ -72,7 +73,9 @@ Don's Daily Gifts for FiveM! This is a paid script, available on my [Tebex](http
 #### Image and Item
 
 - Add the image here to your relevant framework inventory folder.
-- Add the item to your relevant framework shared items, following the format below.
+- Add the item to your relevant framework shared items, following the formats below.
+
+##### qb-inventory
 
 ```lua
 present = {
@@ -86,6 +89,24 @@ present = {
   shouldClose = true,
   combinable = nil,
   description = 'Have you been naughty or nice?'
+}
+```
+
+##### ox_inventory
+
+```lua
+['present'] = {
+  label = 'Gift',
+  weight = 1000,
+  stack = true,
+  close = true,
+  description = 'A gift for someone special',
+  client = {
+    image = 'present.png',
+  },
+  server = {
+    export = 'don-gifts.present'
+  }
 }
 ```
 
@@ -222,7 +243,7 @@ If you are using a locale other than English, you will need to translate the `en
   -- Use the above table to change notify types to suit your notification resource
   if not IsDuplicityVersion() or not src then return end -- This checks whether the function is being called from the server or client
   -- ServerSide Notification
-  -- local Player = exports.duff:require('shared.bridge').getplayer(src)
+  -- local Player = duff.bridge.getplayer(src)
   -- if not Player then return end
   -- Player.showNotification(text)
   TriggerClientEvent('QBCore:Notify', src, text, types[type] or 'primary', time)
@@ -253,6 +274,7 @@ end
 
 ### Changelog
 
+- v1.1.6 - Object creation moved to the server side, PolyZones' removed and replaced with [CMapZones](https://github.com/DonHulieo/duff/blob/main/server/mapzones.lua).
 - v1.1.5 - Support updates for [duff](https://github.com/DonHulieo/duff).
 - v1.1.4 - Add [duff](https://github.com/DonHulieo/duff) as a dependency.
 - v1.1.3 - Changed to use Promises in Version Checker, Fixed Crash Related to Blips & Update README.
