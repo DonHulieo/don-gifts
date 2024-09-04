@@ -5,25 +5,25 @@ return {
   ['Model'] = `prop_xmas_tree_int`,
   ---@type {enabled: boolean, sprite: number, colour: number, scale: number, shortRange: boolean}
   ['Blips'] = {
-    ['enabled'] = true, -- Whether to show blips on the map
-    ['sprite'] = 781, -- Blip sprite | https://docs.fivem.net/docs/game-references/blips/
-    ['colour'] = 25, -- Blip colour | https://docs.fivem.net/docs/game-references/blips/#blip-colors
-    ['scale'] = 0.8, -- Blip scale
-    ['shortRange'] = true -- Whether the blip is shown when close to the player or always.
+    enabled = true, -- Whether to show blips on the map
+    sprite = 781, -- Blip sprite | https://docs.fivem.net/docs/game-references/blips/
+    colour = 25, -- Blip colour | https://docs.fivem.net/docs/game-references/blips/#blip-colors
+    scale = 0.8, -- Blip scale
+    shortRange = true -- Whether the blip is shown when close to the player or always.
   },
   ---@type {enabled: boolean, image: string, colour: number}
   ['DiscordLogs'] = {
-    ['enabled'] = true, -- Whether to log to discord
-    ['image'] = '', -- Set to the image you want to use for the logs
-    ['colour'] = 65309 -- The colour of the embed | https://www.spycolor.com/
+    enabled = true, -- Whether to log to discord
+    image = '', -- Set to the image you want to use for the logs
+    colour = 65309 -- The colour of the embed | https://www.spycolor.com/
   },
   ---@type {unique: boolean, min: number, max: number, total: number, time: string, Items: {BlackList: string[], Chance: {Low: number, Med: number, High: number}, Low: string[], Med: string[], High: string[]}}
   ['Gifts'] = {
-    ['unique'] = true, -- Whether to reward a random set of items from your items table
-    ['min'] = 1, -- Minimum amount of each item
-    ['max'] = 3, -- Maximum amount of each item
-    ['total'] = 5, -- Amount of different items in the present
-    ['time'] = '24:00:00', -- Amount of time before a player can open another present
+    unique = true, -- Whether to reward a random set of items from your items table
+    min = 1, -- Minimum amount of each item
+    max = 3, -- Maximum amount of each item
+    total = 5, -- Amount of different items in the present
+    time = '24:00:00', -- Amount of time before a player can open another present
     ['Items'] = { -- If Config.Unique is false, the items will be randomly selected from this list
       ['BlackList'] = { -- These items will never be in the present
         'present',
@@ -81,8 +81,8 @@ return {
   end,
   ---@type {enabled: boolean, distance: number, icon: string}
   ['Target'] = {
-    ['enabled'] = true, -- Whether to use a target system or drawtext
-    ['distance'] = 1.5, -- The distance the player has to be within to see the target
-    ['icon'] = 'fas fa-gift' -- The icon to use for the target | https://fontawesome.com/icons
+    enabled = true, -- Whether to use a target system or drawtext
+    distance = 1.5, -- The distance the player has to be within to see the target
+    icon = 'fas fa-gift' -- The icon to use for the target | https://fontawesome.com/icons
   }
 }

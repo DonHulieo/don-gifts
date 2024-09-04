@@ -4,7 +4,7 @@ Don's Daily Gifts for FiveM! This is a paid script, available on my [Tebex](http
 
 ## Features
 
-- Optimised code, Resting Resmon of 0.00ms and Remaining at 0.0ms in Use or Peaking at 0.04ms Whilst Displaying DrawText.
+- Optimised Code, Resting Resmon of 0.00ms and Remaining at 0.0ms in Use or Peaking at 0.04ms Whilst Displaying DrawText.
 - Default Christmas Theme, but Can be Changed to Suit Any Theme.
 - Daily Rewards System
 - Players Can Only Claim One Gift Per Pre-Configured Time Period (default 24 hours)
@@ -126,11 +126,11 @@ present = {
 
 ```lua
 ['Blips'] = {
-  ['enabled'] = true,
-  ['sprite'] = 781,
-  ['colour'] = 25,
-  ['scale'] = 0.8,
-  ['shortRange'] = true
+  enabled = true,
+  sprite = 781,
+  colour = 25,
+  scale = 0.8,
+  shortRange = true
 }
 ```
 
@@ -146,9 +146,9 @@ present = {
 
 ```lua
 ['DiscordLogs'] = {
-  ['enabled'] = true,
-  ['image'] = '',
-  ['colour'] = 65309
+  enabled = true,
+  image = '',
+  colour = 65309
 }
 ```
 
@@ -160,11 +160,11 @@ present = {
 
 ```lua
 ['Gifts'] = {
-  ['unique'] = true,
-  ['min'] = 1,
-  ['max'] = 3,
-  ['total'] = 5,
-  ['time'] = '24:00:00',
+  unique = true,
+  min = 1,
+  max = 3,
+  total = 5,
+  time = '24:00:00',
   ['Items'] = {
     ['BlackList'] = {
       'present',
@@ -257,9 +257,9 @@ end
 
 ```lua
 ['Target'] = {
-  ['enabled'] = true, -- Set to false if you don't want to use qb-target or ox_target
-  ['distance'] = 1.5, -- Distance to draw the target
-  ['icon'] = 'fas fa-gift' -- https://fontawesome.com/icons
+  enabled = true, -- Set to false if you don't want to use qb-target or ox_target
+  distance = 1.5, -- Distance to draw the target
+  icon = 'fas fa-gift' -- https://fontawesome.com/icons
 }
 ```
 
@@ -274,6 +274,7 @@ end
 
 ### Changelog
 
+- v1.1.7 - Fixes for Aysnchronous Callbacks, Linting and Annotations updates.
 - v1.1.6 - Object creation moved to the server side, PolyZones' removed and replaced with [CMapZones](https://github.com/DonHulieo/duff/blob/main/server/mapzones.lua).
 - v1.1.5 - Support updates for [duff](https://github.com/DonHulieo/duff).
 - v1.1.4 - Add [duff](https://github.com/DonHulieo/duff) as a dependency.
