@@ -1,6 +1,6 @@
 # don-gifts
 
-Don's Daily Gifts for FiveM! This is a paid script, available on my [Tebex](https://dons-developments.tebex.io/package/5395562).
+Daily Gifts System for FiveM! This is a paid script, available on my [Tebex](https://dons-developments.tebex.io/package/5395562).
 
 ## Features
 
@@ -274,6 +274,7 @@ end
 
 ### Changelog
 
+- v1.1.8 - Support updates for [duff](https://github.com/DonHulieo/duff).
 - v1.1.7 - Fixes for Aysnchronous Callbacks, Linting and Annotations updates.
 - v1.1.6 - Object creation moved to the server side, PolyZones' removed and replaced with [CMapZones](https://github.com/DonHulieo/duff/blob/main/server/mapzones.lua).
 - v1.1.5 - Support updates for [duff](https://github.com/DonHulieo/duff).
